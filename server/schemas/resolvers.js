@@ -10,7 +10,8 @@ const {signToken} = require('../utils/auth')
 //TODO: Define the query and mutation functionality to work. Use the functionality in the user-controller.js as a guide.
 const resolvers = {
     Query: {
-        users: async () => {
+    //Commented these queries as Me query is the only one we're gonna use
+        /*users: async () => {
             return await User.find({}).populate('books').populate(
                 //TODO: Check this
                 // path: 'books',
@@ -24,7 +25,7 @@ const resolvers = {
 
         user: async (parent, {userId}) => {
             return User.findOne({_id: userId});
-        },
+        },*/
 
         me: async (parent, args, context) => {
             if (context.user) {
@@ -36,12 +37,29 @@ const resolvers = {
     },
 
     Mutation: {
-        // TODO: Check if we need to use context in add savedbook or updateSavedBook to see if the user need to be verified
-        addSavedBook: async (parent, {title, author}) => {
-            return await Book.create({title, author});
+        // TODO: Check if we need to use context in add saveBook or updateSavedBook to see if the user need to be verified
+        //changed the name for the mutations to meet the ones defined on the typedefs
+        saveBook: async (parent, { newBook }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findByIdAndUpdate(
+                    {_id: context.user._id},
+                    { $push: { savedBooks: newBook }},
+                    { new: true }
+                );
+                return updatedUser
+            }
+            throw new AuthenticationError('You need to be logged in!')
         },
-        updateSavedBook: async (parent, {title, author}) => {
-            return await User.findOneAndUpdate({_id: id}, {savedBook}, { new: true});
+        removeBook: async (parent, { bookId }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findByIdAndUpdate(
+                    {_id: context.user._id},
+                    { $pull: { savedBooks: {bookId} }},
+                    { new: true }
+                );
+                return updatedUser
+            }
+            throw new AuthenticationError('You need to be logged in!')
         },
         addUser: async (parent, {username, email, password}) => {
             const user = await User.create({ username, email, password});
@@ -56,7 +74,7 @@ const resolvers = {
                 throw new AuthenticationError('No user with this email found!');
             }
 
-            // TODO: finish this
+
             const correctPw = await user.isCorrectPassword(password);
 
             if (!correctPw) {

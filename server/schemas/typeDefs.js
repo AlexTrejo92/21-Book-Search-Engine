@@ -5,14 +5,16 @@ type User {
     _id: ID
     username: String
     email: String
-    password: String
     savedBooks: [Book]
 }
 
 type Book {
-    _id: ID
+    bookId: ID!
+    authors: [String]
+    description: String
     title: String
-    author: String
+    image: String
+    link: String
 }
 
 type Query {
