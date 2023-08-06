@@ -6,7 +6,7 @@ type User {
     username: String
     email: String
     password: String
-    savedBooks: Book
+    savedBooks: [Book]
 }
 
 type Book {
@@ -16,23 +16,40 @@ type Book {
 }
 
 type Query {
-    users: [User]
-    books: [Book]
-    book(id: ID!): Book
+
+    me: User
 }
 
 type Auth {
     token: ID!
-    profile: Profile
+    user: User
+}
+
+input InputBook {
+    bookId: String
+    authors: [String]
+    title: String
+    description: String
+    image: String
+    link: String
 }
 
 
 type Mutation {
-    addSavedBook(title: String!, author: String!): Book
-
+    saveBook(newBook: InputBook!): User
+    removeBook(bookId: ID!): User
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
 }
 `;
 
 module.exports = typeDefs;
+
+// REMOVED THESE LINES FROM THE TYPE QUERY TO DEBUG
+    // users: [User]
+    // books: [Book]
+    // book(id: ID!): Book
+
+//type Mutation {
+    //addSavedBook(title: String!, author: String!): Book
+//}

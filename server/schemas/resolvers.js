@@ -1,8 +1,12 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Book } = require('../models');
+const { User } = require('../models');
 //TODO: check if we need to require the book model
 // const { Book } = require('../models');
 const bookSchema = require('../models/Book');
+
+//We import the sign token for authentication
+const {signToken} = require('../utils/auth')
+
 //TODO: Define the query and mutation functionality to work. Use the functionality in the user-controller.js as a guide.
 const resolvers = {
     Query: {
@@ -32,7 +36,7 @@ const resolvers = {
     },
 
     Mutation: {
-        // TODO: Check if we need to use context in add savedbook to see if the user need to be verified
+        // TODO: Check if we need to use context in add savedbook or updateSavedBook to see if the user need to be verified
         addSavedBook: async (parent, {title, author}) => {
             return await Book.create({title, author});
         },
