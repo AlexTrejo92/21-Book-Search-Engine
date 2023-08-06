@@ -1,6 +1,10 @@
 const express = require('express');
 // Importing the ApolloServer class
 const {ApolloServer} = require('apollo-server-express');
+
+// we import the authMiddleware to use it on the server
+const { authMiddleware } = require('./utils/auth');
+
 // iMPORT THE TWO PARTS OF A Graph Schema
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -14,6 +18,7 @@ const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: authMiddleware,
 });
 
 const app = express();
