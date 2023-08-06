@@ -2,12 +2,24 @@
 
 import { gql } from '@apollo/client';
 
-// TODO: write queries
-export const QUERY_USERS = gql`
-    query allUsers {
-        users {
+
+export const GET_ME = gql`
+    query get_me {
+        me {
             _id
             username
+            email
+            bookCount
+            savedBooks {
+                bookId
+                authors
+                description
+                title
+                image
+                link
+            }
         }
     }
     `;
+
+// Since we only have the Me query defined, we will use that. This is defined on the acceptance criteria for the challenge.

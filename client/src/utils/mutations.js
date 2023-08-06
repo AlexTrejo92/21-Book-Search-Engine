@@ -2,21 +2,86 @@
 
 import { gql } from '@apollo/client';
 //TODO: Check the mutations that will happen in the application, make sure to check the server side resolvers and typeDefs
-export const ADD_SAVEDBOOK = gql`
-    mutation addSavedBook($title: String!) {
-        addSavedBook(title: $title) {
-            _id
-            usename
+export const LOGIN_USER = gql`
+    mutation loginUser(
+        $email: String!
+        $password: String!
+    ) {
+        login(
+            email: $email
+            password: $password
+        ) {
+            token
+            user {
+                _id
+                username
+            }
         }
     }
 `;
-// TODO: check this
+
 export const ADD_USER = gql`
-    mutation addUser($usernameId: ID!, $skill: String!) {
-        addSkill(userId: $userId, ) {
+    mutation addUser(
+        $username: String!
+        $email: String!
+        $password: String!
+        ) {
+        addUser(
+            username: $username
+            email: $email
+            password: $password
+            ) {
+                token
+                user {
+                    _id
+                    username
+                    email
+                    bookCount
+                    savedBooks {
+                        authors
+                        bookId
+                        image
+                        link
+                        title
+                        description
+                    }
+                }
+            }
+        }
+`;
+
+export const SAVE_BOOK = gql`
+    mutation saveBook($newBook: InputBook!) {
+        saveBook(newBook: $newBook) {
             _id
             username
-
+            email
+            savedBooks {
+                bookId
+                authors
+                description
+                title
+                image
+                link
+            }
         }
     }
-`
+`;
+
+export const REMOVE_BOOK = gql`
+    mutation removeBook($bookId: ID!) {
+        removeBook(bookId: $bookId) {
+            _id
+            username
+            email
+            savedBooks {
+                bookId
+                authors
+                description
+                title
+                image
+                link
+            }
+        }
+    }
+`;
