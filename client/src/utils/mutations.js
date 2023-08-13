@@ -7,7 +7,7 @@ export const LOGIN_USER = gql`
         $email: String!
         $password: String!
     ) {
-        login(
+        loginUser(
             email: $email
             password: $password
         ) {
@@ -76,17 +76,3 @@ export const REMOVE_BOOK = gql`
         }
     }
 `;
-
-// removed from ADD_USER token
-/*
-                    email
-                    bookCount
-                    savedBooks {
-                        authors
-                        bookId
-                        image
-                        link
-                        title
-                        description
-                    }
-*/
