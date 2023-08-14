@@ -1,5 +1,5 @@
 # 21-Book-Search-Engine
-This is a repo created for the 21st challenge from the EdX bootcamp
+This is a repo created for the 21st challenge from the EdX bootcamp. This will be deployed on heroku.
 
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
@@ -57,7 +57,7 @@ Please use ```npm i``` to install the dependencies needed for this project (make
 ## Mockup
 The website looks something like this:
 
-![alt text](./client/public/img/ss1.jpg)
+![alt text](./client/public/img/mockup.gif)
 
 Please clone this repo into your local and run NPM run develop to test functionality of this app while the deployment is fixed.
 
