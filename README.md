@@ -1,5 +1,5 @@
 # 21-Book-Search-Engine
-This is a repo created for the 21st challenge from the EdX bootcamp. This will be deployed on heroku.
+This is a repo created for the 21st challenge from the EdX bootcamp. This application is deployed on heroku.
 
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
@@ -51,7 +51,7 @@ This challenge consisted in refactoring a fully functioning Google Books API sea
 - [Questions](#questions)
 
 ## Installation
-Please use ```npm i``` to install the dependencies needed for this project (make sure you have Node.JS installed). Use ```npm start``` to run the server. or ```npm run develop``` tu run a developer build.
+Please use ```npm i``` to install the dependencies needed for this project (make sure you have Node.JS installed) to run locally. Use ```npm start``` to run the server or ```npm run develop``` tu run a developer build.
 
 
 ## Mockup
@@ -59,17 +59,9 @@ The website looks something like this:
 
 ![alt text](./client/public/img/mockup.gif)
 
-Please clone this repo into your local and run NPM run develop to test functionality of this app while the deployment is fixed.
-
-Currently working: 
-
-- Search books
-- login/signup form working
-- save book working
-
 
 ## Link
-Here is the link to the deployed application! (currently being debugged as the deployment failed!)  https://pure-sea-09227-08031f3f9006.herokuapp.com/ 
+Here is the link to the deployed application! https://googlesearchbook-mern-8e139c3549b4.herokuapp.com/
 
 ## Credits
 The GrapghQL refactoring from this website was coded by me with support from a tutor. The mockup design, starting code for a restful API and acceptance criteria was provided by EdX & Tec de Monterrey.

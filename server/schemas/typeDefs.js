@@ -18,7 +18,6 @@ type Book {
 }
 
 type Query {
-
     me: User
 }
 
@@ -46,12 +45,3 @@ type Mutation {
 `;
 
 module.exports = typeDefs;
-
-// REMOVED THESE LINES FROM THE TYPE QUERY TO DEBUG
-    // users: [User]
-    // books: [Book]
-    // book(id: ID!): Book
-
-//type Mutation {
-    //addSavedBook(title: String!, author: String!): Book
-//}

@@ -1,7 +1,7 @@
 //created file to use mutations
 
 import { gql } from '@apollo/client';
-//TODO: Check the mutations that will happen in the application, make sure to check the server side resolvers and typeDefs
+// This code is so the front-ed can use the mutations defined on the back-end.
 export const LOGIN_USER = gql`
     mutation loginUser(
         $email: String!
@@ -35,7 +35,6 @@ export const ADD_USER = gql`
                 user {
                     _id
                     username
-                    
                 }
             }
         }

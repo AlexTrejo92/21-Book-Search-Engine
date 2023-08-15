@@ -11,14 +11,12 @@ module.exports = {
       code: 'UNAUTHENTICATED',
     },
   }),
-  // function for our authenticated routes
-  // authMiddleware: function (req, res, next) {
+  // Auth Middleware function for GraphQL
   authMiddleware: function ({req}) {
     
-    // allows token to be sent via  req.query or headers
+    // allows token to be sent via body, query or headers
     let token = req.body.token || req.query.token || req.headers.authorization;
-console.log(token);
-    // ["Bearer", "<tokenvalue>"]
+
     if (req.headers.authorization) {
       token = token.split(' ').pop().trim();
     }
@@ -34,11 +32,8 @@ console.log(token);
       req.user = data;
     } catch {
       console.log('Invalid token');
-      // return res.status(400).json({ message: 'invalid token!' });
     }
 
-    // send to next endpoint
-    // next();
     return req;
   },
   signToken: function ({ username, email, _id }) {

@@ -7,7 +7,6 @@ import {
   Col
 } from 'react-bootstrap';
 
-// import { getMe, deleteBook } from '../utils/API';
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
@@ -15,9 +14,8 @@ import { GET_ME } from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
 import { useQuery, useMutation } from '@apollo/client';
 
-// Commented previous functionality in this function to use the GraphQL mutations
+// Changed previous functionality in this function to use the GraphQL mutations
 const SavedBooks = () => {
-  // const [userData, setUserData] = useState({});
   const { loading, data } = useQuery(GET_ME);
   const [removeBook, {error}] = useMutation(REMOVE_BOOK);
   const userData = data?.me || {};

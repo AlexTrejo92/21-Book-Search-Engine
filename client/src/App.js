@@ -1,9 +1,6 @@
 import React from 'react';
-// TODO: Addition of Apollo client in order for the app to work
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
-
 import { setContext } from '@apollo/client/link/context';
-// TODO: check if the routes will be needed
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchBooks from './pages/SearchBooks';
 import SavedBooks from './pages/SavedBooks';
